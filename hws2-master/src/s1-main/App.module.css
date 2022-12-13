@@ -3,9 +3,20 @@
 }
 
 .hw {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
 
 }
 
 .hwTitle {
+    margin-top: 50px;
+    margin-left: 50px;
+}
 
+.line {
+    background-color: darkgrey;
+    margin-bottom: 15px;
+    margin-top: 5px;
 }
