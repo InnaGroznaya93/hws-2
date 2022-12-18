@@ -68,6 +68,7 @@ const HW1 = () => {
                 {/*для автоматической проверки дз (не менять)*/}
                 <MessageSender M={Message} />
             </div>
+            <hr className={s2.line}/>
         </div>
     )
 }
