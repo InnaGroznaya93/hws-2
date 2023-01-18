@@ -27,7 +27,8 @@
 }
 
 .hwTitle {
-    margin: 24px 0 -15px 0;
+    margin: 24px 0 5px 0;
+    padding: 15px;
     font-style: normal;
     font-weight: 600;
     font-size: 22px;
@@ -35,5 +36,9 @@
     /*border: 2px solid black;*/
     display: flex;
 
+}
+
+.hw {
+    padding: 15px;
 }
 
