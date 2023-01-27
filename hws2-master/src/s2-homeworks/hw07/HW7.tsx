@@ -12,9 +12,9 @@ import s from './HW7.module.css'
 * */
 
 const arr = [
-    { id: 1, value: 'x' },
-    { id: 2, value: 'y' },
-    { id: 3, value: 'z' },
+    { id: 1, value: 'Pre-junior' },
+    { id: 2, value: 'Junior' },
+    { id: 3, value: 'Junior+' },
 ] // value может быть изменено
 
 const HW7 = () => {
@@ -29,6 +29,7 @@ const HW7 = () => {
                 <div className={s.container}>
                     <div>
                         <SuperSelect
+                            className={s.select}
                             id={'hw7-super-select'}
                             options={arr}
                             value={value}
@@ -37,6 +38,7 @@ const HW7 = () => {
                     </div>
                     <div>
                         <SuperRadio
+                            className={s.radio}
                             id={'hw7-super-radio'}
                             name={'hw7-radio'}
                             options={arr}

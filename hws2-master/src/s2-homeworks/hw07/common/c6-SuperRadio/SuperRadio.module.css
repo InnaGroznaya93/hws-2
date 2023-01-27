@@ -1,4 +1,6 @@
 .radio {
+    border: 2px solid black;
+
 }
 
 .radio::before {
@@ -9,7 +11,13 @@
 }
 
 .label {
+    /*border: 2px solid black;*/
+    display: flex;
+    gap: 15px;
+    padding: 5px;
 }
 
 .options {
+    /*border: 2px solid black;*/
+
 }
