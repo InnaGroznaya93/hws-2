@@ -2,7 +2,9 @@
 }
 
 .wrapper {
+    display: flex;
 }
 
 .number {
+    font-weight: bold;
 }
