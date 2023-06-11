@@ -1,7 +1,13 @@
+.all {
+    height: 250px;
+    width: 600px;
+}
+
 .tech {
 
 }
 
 .loading {
-
+    color: darkgrey;
+    text-align: center;
 }
