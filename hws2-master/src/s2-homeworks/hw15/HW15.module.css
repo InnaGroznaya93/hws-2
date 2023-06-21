@@ -1,3 +1,9 @@
+.container {
+    /*border: 2px solid black;*/
+    width: 550px;
+    position: relative;
+}
+
 .tech {
     width: 50vw;
 }
@@ -11,17 +17,36 @@
 }
 
 .developerHeader {
-
+    display: inherit;
 }
 
 .row {
     display: flex;
+    justify-content: space-around;
 }
 
 .rowHeader {
     display: flex;
+    background-color: #E5E5E5;
+    padding: 15px 5px;
+    justify-content: space-around;
 }
 
 .loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
 
+.loadingImg {
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
 }

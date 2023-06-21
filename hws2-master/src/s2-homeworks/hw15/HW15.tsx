@@ -5,6 +5,7 @@ import axios from 'axios'
 import SuperPagination from './common/c9-SuperPagination/SuperPagination'
 import {useSearchParams} from 'react-router-dom'
 import SuperSort from './common/c10-SuperSort/SuperSort'
+import loadingGif from './asserts/images/loading-thinking.gif'
 
 /*
 * 1 - дописать SuperPagination
@@ -21,10 +22,12 @@ type TechType = {
     developer: string
 }
 
+// 'https://incubator-personal-page-back.herokuapp.com/api/3.0/homework/test3'  --- old url
 const getTechs = (params: any) => {
+    // console.log('params: ', params)
     return axios
         .get<{ techs: TechType[], totalCount: number }>(
-            'https://incubator-personal-page-back.herokuapp.com/api/3.0/homework/test3',
+            'https://samurai.it-incubator.io/api/3.0/homework/test3',
             {params}
         )
         .catch((e) => {
@@ -50,6 +53,12 @@ const HW15 = () => {
                 // сохранить пришедшие данные
 
                 //
+                // console.log('res from axios: ', res)
+                if(res) {
+                    setTechs(res.data.techs)
+                    setTotalCount(res.data.totalCount)
+                }
+                setLoading(false)
             })
     }
 
@@ -63,6 +72,10 @@ const HW15 = () => {
         // setSearchParams(
 
         //
+        setPage(newPage)
+        setCount(newCount)
+        sendQuery({count: newCount, page: newPage, sort})
+        setSearchParams({page: newPage.toString(), count: newCount.toString()})
     }
 
     const onChangeSort = (newSort: string) => {
@@ -75,11 +88,14 @@ const HW15 = () => {
         // setSearchParams(
 
         //
+        setSort(newSort)
+        setPage(1)
+        sendQuery({count, page: '1', sort})
     }
 
     useEffect(() => {
         const params = Object.fromEntries(searchParams)
-        sendQuery({page: params.page, count: params.count})
+        sendQuery({page: params.page, count: params.count, sort})
         setPage(+params.page || 1)
         setCount(+params.count || 4)
     }, [])
@@ -101,28 +117,30 @@ const HW15 = () => {
             <div className={s2.hwTitle}>Homework #15</div>
 
             <div className={s2.hw}>
-                {idLoading && <div id={'hw15-loading'} className={s.loading}>Loading...</div>}
+                <div className={s.container}>
+                    {idLoading && <div id={'hw15-loading'} className={s.loading}><img src={loadingGif} className={s.loadingImg}/></div>}
 
-                <SuperPagination
-                    page={page}
-                    itemsCountForPage={count}
-                    totalCount={totalCount}
-                    onChange={onChangePagination}
-                />
+                    <SuperPagination
+                        page={page}
+                        itemsCountForPage={count}
+                        totalCount={totalCount}
+                        onChange={onChangePagination}
+                    />
 
-                <div className={s.rowHeader}>
-                    <div className={s.techHeader}>
-                        tech
-                        <SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
+                    <div className={s.rowHeader}>
+                        <div className={s.techHeader}>
+                            tech
+                            <SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
+                        </div>
+
+                        <div className={s.developerHeader}>
+                            developer
+                            <SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
+                        </div>
                     </div>
 
-                    <div className={s.developerHeader}>
-                        developer
-                        <SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
-                    </div>
+                    {mappedTechs}
                 </div>
-
-                {mappedTechs}
             </div>
         </div>
     )
