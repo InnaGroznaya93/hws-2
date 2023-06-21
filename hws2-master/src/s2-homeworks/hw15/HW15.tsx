@@ -75,7 +75,7 @@ const HW15 = () => {
         setPage(newPage)
         setCount(newCount)
         sendQuery({count: newCount, page: newPage, sort})
-        setSearchParams({page: newPage.toString(), count: newCount.toString()})
+        setSearchParams({page: newPage.toString(), count: newCount.toString(), sort: sort.toString()})
     }
 
     const onChangeSort = (newSort: string) => {
@@ -90,7 +90,8 @@ const HW15 = () => {
         //
         setSort(newSort)
         setPage(1)
-        sendQuery({count, page: '1', sort})
+        sendQuery({count, page: '1', sort: newSort})
+        setSearchParams({page: '1', count: count.toString(), sort: newSort})
     }
 
     useEffect(() => {
